@@ -1,0 +1,84 @@
+<code class="code-multiline"><!doctype html>
+    <html>
+    <head>
+        <meta charset="UTF-8" />
+        
+        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
+        <link rel="stylesheet" href="./css/bootstrap/bootstrap.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+        <link rel="stylesheet" href="./css/index.css">
+        <title>トップページ</title>
+    </head>
+    
+    <body>
+        <div class="header">
+        <h1><a class="header-title" href="./index.html">西浦田楽演目文献アーカイブ</a></h1>
+        <h2><a class="link" href="./category-search.html">カテゴリで探す</a></h2>
+        </div>
+        <div class="btn-area">
+            <button id="release-check" class="option-btn">全ての選択を解除</button>
+            <button id="compare-button" class="option-btn">選択文献の比較</button>
+        </div>
+        
+        <div class="information-area">
+            <p class="checked-number-area"></p>
+            <p id="information" class="information">文献について<img class="modal-open" src="./img/question-mark.png" alt="question-mark"></p>
+            <p id="information2" class="information introduction-btn">使い方<img class="modal-open" src="./img/question-mark.png" alt="question-mark"></p>
+            <div class="modal-container">
+                <div class="modal-body">
+                    <img class="modal-close" src="./img/close-btn.png" alt="close-button">
+                    <div id="modal-content" class="modal-content"></div>
+                </div>
+            </div>
+        </div>    
+        <div class="modal-container3">
+            <div class="modal-body3">
+                <img class="modal-close3" src="./img/close-btn.png" alt="close-button">
+                <div class="modal-content3">
+                    <div class="slider2">
+                    <div class="manipulation-description">
+                        <h3>西浦田楽演目文献アーカイブへようこそ</h3>
+                        <p>本デジタルアーカイブでは、西浦田楽の演目に関する記述がされている文献を<br>演目や著者、道具/衣装をもとに検索することができます</p>
+                        <p>また、複数の文献を最大４つまで比較しながら閲覧することができます</p>
+                        <img  src="./img/top.png" alt="top-page">
+                    </div>
+                    <div class="manipulation-description">
+                        <h3>トップページの使い方１</h3>
+                        <p class="top-1">タブをクリックすると、演目種別(地能・はね能・番外)と<br>演目(庭ならし、御子舞・・・)を切り替えることができます</p>
+                        <img class="top-1" src="./img/top-1.png" alt="top-page">
+                    </div>
+                    <div class="manipulation-description">
+                        <h3>トップページの使い方２</h3>
+                        <p class="top-2">文献のサムネイルをクリックすると、文献を閲覧するページに移動します</p>
+                        <img class="top-2" src="./img/top-2.png" alt="top-page">
+                    </div>
+                    <div class="manipulation-description">
+                        <h3>トップページの使い方３</h3>
+                        <p>文献のサムネイル左上のチェックボックスにチェックを入れて「選択文献の比較」ボタンをクリックすると、チェックした文献を比較しながら閲覧できます</p>
+                        <p>また、「すべての選択を解除」ボタンをクリックすると、チェックボックスの<br>チェックをまとめて外すことができます</p>
+                        <img class="top-3" src="./img/top-3.png" alt="top-page">
+                    </div>
+                    <div class="manipulation-description">
+                        <h3>トップページの使い方４</h3>
+                        <p>「文献について」をクリックすると、本デジタルアーカイブで閲覧のできる<br>文献の一覧と、各文献の基本情報を見ることができます</p>
+                        <p>また、「使い方」をクリックすると、本説名画面を再度見ることができます</p>
+                        <img src="./img/top-4.png" alt="top-page">
+                    </div>
+                    </div>
+                    <input id="check-whether" type="checkbox" name="show-or-not" value=""><label id="check-whether-label" for="show-or-not">今後表示しない</label></input>
+                </div>
+            </div>
+        </div>
+        <ul id="parent" class="nav nav-tabs parent-tab-content"></ul>
+        <div id="tab-content" class="tab-content">
+        </div>   
+
+        <script  src="./js/bootstrap/js/bootstrap.bundle.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>        
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        <script type="text/javascript" src="./js/index.js" ></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    </body>    
+    </html></code>
