@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500&display=swap');
+
+
+/* header */
+
+.header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    width: 100%;
+    z-index: 3;
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+.header-title {
+    color: black;
+    padding-bottom: 3px;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 500;
+}
+
+.header-title:hover {
+    color: gray
+}
+
+.link {
+    font-size: 24px;
+    position: absolute;
+    right: 1%;
+    top: 20%;
+    color: #3A35F6;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 400;
+}
+
+.link:hover {
+    border-bottom: 2px solid #3A35F6;
+    color: #3A35F6;
+}
+
+/* header  fin*/
+
+a {
+    padding-top: 5px 5px;
+    color: white;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: rgb(13, 12, 12);
+}
+
+.option {
+    position: relative;
+    top: 7%;
+    margin-top: 8vh;
+    left: 10%;
+    font-size: 25px;
+    width: 20%;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 400;
+}
+
+/* Accordion menu */
+
+/*アコーディオン全体*/
+.accordion-area {
+    position: relative;
+    list-style: none;
+    top: 7%;
+    width: 75%;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 8vh;
+    left: 15%;
+    background-color: #DAE3F3;
+}
+
+.accordion-area li {
+    margin: 0;
+    width: 50%;
+}
+
+.accordion-area section {
+    border: 1px solid rgb(165, 164, 164);
+
+}
+
+/*アコーディオンタイトル*/
+.title {
+    position: relative;
+    cursor: pointer;
+    font-weight: normal;
+    padding: 2% 0 2% 40px;
+    transition: all .5s ease;
+    font-size: 16px;
+    width: 100% !important;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 400;
+}
+
+.title::after {
+    border-right: solid 3px black;
+    border-top: solid 3px black;
+    content: "";
+    display: block;
+    height: 8px;
+    position: absolute;
+    left: 25px;
+    top: 38%;
+    transform: rotate(135deg);
+    transition: transform .3s ease-in-out, top .3s ease-in-out;
+    width: 8px;
+}
+
+.title.close::after {
+    top: 45%;
+    transform: rotate(-45deg);
+}
+
+
+/*アコーディオンで現れるエリア*/
+.box {
+    display: none;
+    /*はじめは非表示*/
+    background: #f3f3f3;
+    margin: 0 3% 3% 3%;
+    padding: 1%;
+}
+
+.detail-content {
+    list-style-type: disc;
+    padding-left: 1em;
+    width: 100% !important;
+    padding-bottom: 10;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 400;
+}
+
+.view-link {
+    color: #3A35F6;
+}
+
+/* Accordion menu fin */
+
+/* Monitor */
+@media(min-width:1450px) {
+    .header-title {
+        font-size: 60px;
+    }
+
+    .link {
+        font-size: 30px;
+        top: 22%;
+    }
+
+    .option {
+        font-size: 32px;
+        left: 8%;
+        margin-top: 5vh;
+    }
+
+    .accordion-area {
+        width: 80%;
+        left: 10%;
+        margin-bottom: 7vh;
+    }
+
+    .accordion-area li {
+        width: 50%;
+    }
+
+    .title {
+        font-size: 21px;
+    }
+
+    .detail-content{
+        padding-bottom: 20px;
+    }
+
+    .view-link {
+        font-size: 20px;
+    }
+}

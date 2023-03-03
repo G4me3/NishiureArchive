@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500&display=swap');
+
+
+a {
+    text-decoration: none;
+}
+
+/* header */
+
+.header {
+    position: relative;
+    display: flex;
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+.header-title {
+    color: black;
+    padding-bottom: 3px;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 500;
+}
+
+.header-title:hover {
+    color: gray
+}
+
+.link {
+    font-size: 24px;
+    position: absolute;
+    right: 1%;
+    top: 20%;
+    color: #3A35F6;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 400;
+}
+
+.link:hover {
+    border-bottom: 2px solid #3A35F6;
+    ;
+    color: #3A35F6;
+}
+
+/* header fin */
+
+#viewer {
+    position: absolute;
+    top: 12%;
+    width: 70%;
+    height: 82%;
+    left: 30px;
+}
+
+/* reference list */
+
+.other-references {
+    background-color: #F2F2F2;
+    position: absolute;
+    width: 300px;
+    height: 450px;
+    left: 75%;
+    top: 19%;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 400;
+}
+
+.h2 {
+    text-align: center;
+    margin-top: 5px;
+    position: inherit;
+    left: 30%;
+}
+
+.book-data {
+    text-align: center;
+    margin-left: 20px;
+    width: 40%;
+    height: 30%;
+    margin-top: 70px;
+}
+
+.book {
+    width: 65%;
+    height: 65%;
+    margin-bottom: 10px;
+}
+
+.relation-link {
+    color: black;
+}
+
+/* reference list fin */
+
+/* MAC note */
+@media(min-width:1400px) {
+    .other-references{
+        width: 25.3vw;
+        left: 73.5%;
+        height: 68vh;
+    }
+    
+    .h2{
+        margin-top: 2vh;
+    }
+}
+
+/* monitor */
+@media(min-width:1450px) {
+    .header-title {
+        font-size: 60px;
+    }
+
+    .link {
+        font-size: 30px;
+        top: 22%;
+    }
+
+    #viewer {
+        left: 45px;
+    }
+
+    .h2 {
+        left: 35%;
+    }
+
+    .other-references {
+        top: 17%;
+        left: 75%;
+        width: 450px;
+        height: 700px;
+    }
+
+    .book-data {
+        font-size: 18px;
+    }
+
+    .book {
+        width: 65%;
+        height: 65%;
+        margin-bottom: 20px;
+    }
+}

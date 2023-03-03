@@ -1,0 +1,967 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500&display=swap');
+
+body {
+    overflow-x: hidden;
+}
+
+/* header */
+
+.header {
+    position: relative;
+    display: flex;
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+.header-title {
+    color: black;
+    padding-bottom: 3px;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 500;
+}
+
+.header-title:hover {
+    color: gray
+}
+
+.link {
+    font-size: 24px;
+    position: absolute;
+    right: 1%;
+    top: 20%;
+    color: #3A35F6;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 400;
+}
+
+.link:hover {
+    border-bottom: 2px solid #3A35F6;
+    color: #3A35F6;
+}
+
+/* header  fin*/
+
+/* button */
+
+.btn-area {
+    position: relative;
+    display: flex;
+    top: 3%;
+    left: 60%;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 500;
+}
+
+.checked-number-area{
+    position: absolute;
+    margin-left: -25vw;
+    margin-top: -2vh;
+    font-size: 18px;
+    display: none;
+}
+
+.information-area {
+    position: relative;
+    left: 69%;
+    top: 5.9%;
+    width: 20vw;
+    display: flex;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 500;
+}
+
+.information {
+    text-align: center;
+    font-size: 18px;
+    margin-right: 1vw;
+}
+
+.information:hover {
+    color: #3A35F6;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.option-btn {
+    font-size: 18px;
+}
+
+#compare-button {
+    background-color: rgb(15, 226, 15);
+}
+
+#release-check {
+    background-color: lightgreen;
+    margin-right: 25px;
+}
+
+.option-btn:hover {
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* button fin */
+
+/* cross table */
+
+.tab-content ul.sub-tab-content {
+    display: none;
+}
+
+.tab-content ul.sub-tab-content.active {
+    display: block;
+}
+
+.tab-content {
+    position: relative;
+    left: 16%;
+    top: -1px;
+    width: 890px;
+    border-top: 2px black solid;
+    border-right: 2px black solid;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 400;
+}
+
+.parent-tab-content {
+    position: relative;
+    border: none;
+    margin-top: 40px;
+    left: 20%;
+}
+
+.parent-tab-content li {
+    position: relative;
+    margin-right: 2vw;
+    padding: 3px 75px;
+    width: 260px;
+    text-align: center;
+    font-size: 26px;
+}
+
+.sub-tab-content {
+    max-height: 450px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.sub-tab-content li {
+    margin-top: -5px;
+}
+
+.sub-tab-content::-webkit-scrollbar {
+    display: none;
+}
+
+.content-list {
+    position: relative;
+    writing-mode: vertical-rl;
+    font-size: 20px;
+    border-right: 2px solid black;
+    border-top: 4px solid white;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+    padding-right: 10px;
+    margin-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 180px;
+    width: 50px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+a {
+    padding-top: 5px 5px;
+    color: white;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: rgb(13, 12, 12);
+}
+
+.none-a{
+    pointer-events: none;
+}
+
+.parent-tab-content li.active {
+    background-color: #3863ac;
+}
+
+.sub-tab-content li.active{
+    background-color: #5a86d3;
+    
+}
+
+li.not-show {
+    background-color: #AFABAB;
+}
+
+.not-show {
+    background-color: rgba(225, 219, 219, 0.4);
+}
+
+/* div.active {
+    background-color: rgb(218, 227, 243);
+} */
+
+.contents-block {
+    position: relative;
+    width: 890px;
+    border-top: 1px solid #AFABAB;
+}
+
+.triangle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top: 25px solid white;
+    border-right: 35px solid transparent;
+}
+
+.triangle2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-top: 25px solid transparent;
+    border-left: 30px solid white;
+}
+
+.tab-contents {
+    position: absolute;
+    color: black;
+    top: 0%;
+    left: 5%;
+    margin-left: 3px;
+    display: flex;
+    width: 840px;
+}
+
+/*slider*/
+
+.slider {
+    /*横幅94%で左右に余白を持たせて中央寄せ*/
+    width: 94%;
+    margin: 0;
+}
+
+.slider img {
+    height: auto;
+}
+
+/*slickのJSで書かれるタグ内、スライド左右の余白調整*/
+
+.slider .slick-slide {
+    margin: 0 10px;
+}
+
+/*矢印の設定*/
+
+/*戻る、次へ矢印の位置*/
+.slick-prev,
+.slick-next {
+    position: absolute;
+    /*絶対配置にする*/
+    top: 42%;
+    cursor: pointer;
+    /*マウスカーソルを指マークに*/
+    outline: none;
+    /*クリックをしたら出てくる枠線を消す*/
+    border-top: 2px solid #666;
+    /*矢印の色*/
+    border-right: 2px solid #666;
+    /*矢印の色*/
+    height: 15px;
+    width: 15px;
+}
+
+.slick-prev {
+    /*戻る矢印の位置と形状*/
+    left: 2%;
+    transform: rotate(-135deg);
+}
+
+.slick-next {
+    /*次へ矢印の位置と形状*/
+    right: -2%;
+    transform: rotate(45deg);
+}
+
+/*ドットナビゲーションの設定*/
+
+.slick-dots {
+    text-align: center;
+    margin: 20px 0 0 0;
+}
+
+.slick-dots li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.slick-dots button {
+    color: transparent;
+    /* outline: none; */
+    width: 10px;
+    /*ドットボタンのサイズ*/
+    height: 15px;
+    /*ドットボタンのサイズ*/
+    display: block;
+    border-radius: 50%;
+    background: #e1dbdb;
+    /*ドットボタンの色*/
+}
+
+.slick-dots .slick-active button {
+    background: #a1c4fd;
+    /*ドットボタンの現在地表示の色*/
+}
+
+/*slider*/
+
+.checkboxes {
+    position: absolute;
+    top: 10%;
+    margin-left: 5px;
+    transform: scale(1.5);
+    accent-color: lightyellow;
+    z-index: 3;
+}
+
+/* modal window */
+
+.modal-open {
+    margin-left: 0.15vw;
+    margin-bottom: 0.5vh;
+    width: 1.5vw;
+    height: 1.5vw;
+}
+
+.modal-open:hover {
+    cursor: pointer;
+}
+
+/*モーダル本体の指定 + モーダル外側の背景の指定*/
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 50%) !important;
+    padding: 40px 20px;
+    overflow: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+/*モーダル本体の擬似要素の指定*/
+.modal-container:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+/*モーダル本体に「active」クラス付与した時のスタイル*/
+.modal-container.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/*モーダル枠の指定*/
+.modal-body {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 900px;
+    width: 60%;
+    max-height: 500px;
+    height: 90%;
+    margin-top: -50;
+}
+
+/*モーダルを閉じるボタンの指定*/
+.modal-close {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -20px;
+    right: -40px;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+/*モーダル内のコンテンツの指定*/
+.modal-content {
+    background: #fff;
+    text-align: left;
+    padding: 30px;
+}
+
+.modal-content h3 {
+    text-align: center;
+    margin-bottom: 3vh;
+}
+
+.description-area {
+    text-align: center;
+    margin-bottom: 3vh;
+}
+
+.description-area h2 {
+    font-size: 36px;
+    background-color: cornflowerblue;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 400;
+}
+
+.description-area p {
+    font-size: 17px;
+}
+
+.literature-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.literature-block {
+    text-align: center;
+    margin: 0;
+    width: 50%;
+    margin-bottom: 3vh;
+}
+
+.literature-block {
+    display: inline;
+}
+
+.literature-block p {
+    margin-bottom: 0.5vh;
+    font-size: 16px;
+}
+
+.literature-block p:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.literature-block img {
+    width: 70%;
+    height: 70%;
+    border: solid 1px #666;
+    cursor: pointer;
+}
+
+/* modal2 */
+/*モーダル本体の指定 + モーダル外側の背景の指定*/
+.modal-container2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 50%) !important;
+    padding: 40px 20px;
+    overflow: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+/*モーダル本体の擬似要素の指定*/
+.modal-container2:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+/*モーダル本体に「active」クラス付与した時のスタイル*/
+.modal-container2.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/*モーダル枠の指定*/
+.modal-body2 {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 900px;
+    width: 51%;
+    max-height: 500px;
+    height: 90%;
+    margin-top: -30;
+}
+
+/*モーダルを閉じるボタンの指定*/
+.modal-close2 {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -40px;
+    right: -40px;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 20;
+}
+
+/*モーダル内のコンテンツの指定*/
+.modal-content2 {
+    background: #fff;
+    text-align: left;
+    padding: 30px;
+    position: relative;
+}
+
+.literature-detail {
+    display: flex;
+}
+
+.modal-content2 h3 {
+    text-align: center;
+    background-color: #c79852;
+    margin-bottom: 3vh;
+    position: relative;
+    color: white;
+    padding: 5;
+}
+
+.modal-content2 img {
+    width: 50%;
+    height: 50%;
+    border: solid 1px #666;
+    margin-right: 1vw;
+}
+
+table {
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 5px;
+    width: 50%;
+    height: 50%;
+}
+
+table th,
+table td {
+    border-radius: 5px;
+    text-align: center;
+}
+
+table th {
+    background-color: #c79852;
+    color: white;
+    border: solid 1px #927141;
+    width: 30%;
+}
+
+table td {
+    background-color: #e4d4bc;
+    border: solid 1px #af9d85;
+}
+
+
+/* modal window */
+
+/*モーダル本体の指定 + モーダル外側の背景の指定*/
+.modal-container3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 50%) !important;
+    padding: 40px 20px;
+    overflow: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+/*モーダル本体の擬似要素の指定*/
+.modal-container3:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+/*モーダル本体に「active」クラス付与した時のスタイル*/
+.modal-container3.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/*モーダル枠の指定*/
+.modal-body3 {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 900px;
+    width: 60%;
+    max-height: 500px;
+    height: 80%;
+    margin-top: -80;
+}
+
+/*モーダルを閉じるボタンの指定*/
+.modal-close3 {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -40px;
+    right: -40px;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+/*モーダル内のコンテンツの指定*/
+.modal-content3 {
+    background: #fff;
+    text-align: left;
+    padding: 30px;
+}
+
+.manipulation-description {
+    position: relative;
+    left: 0.1%;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 400;
+}
+
+.manipulation-description h3 {
+    text-align: center;
+    background-color: #a1c4fd;
+    padding: 5 3 5 3;
+    font-size: 32px;
+    margin-bottom: 2vh;
+    margin-right: 0.7vw;
+}
+
+.manipulation-description p {
+    text-align: center;
+    font-size: 16px;
+    width: 85%;
+    margin: auto;
+}
+
+.manipulation-description img {
+    margin: auto;
+    margin-top: 3vh;
+    width: 62%;
+    height: 62%;
+    border: 1px solid #333;
+}
+
+.top-1 {
+    margin-top: 3vh !important;
+}
+
+.top-2 {
+    margin-top: 5vh !important;
+}
+
+.top-3 {
+    width: 55% !important;
+    height: 55% !important;
+}
+
+#check-whether {
+    transform: scale(1.2);
+    margin-right: 0.5vw;
+    margin-left: 3vw;
+    cursor: pointer;
+}
+
+label[for="show-or-not"] {
+    font-size: 18px;
+    cursor: pointer;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 400;
+}
+
+/* modal window fin */
+
+.slick-prev2,
+.slick-next2 {
+    position: absolute;
+    /*絶対配置にする*/
+    top: 45%;
+    cursor: pointer;
+    /*マウスカーソルを指マークに*/
+    outline: none;
+    /*クリックをしたら出てくる枠線を消す*/
+    border-top: 2px solid #666;
+    /*矢印の色*/
+    border-right: 2px solid #666;
+    /*矢印の色*/
+    height: 30px;
+    width: 30px;
+}
+
+.slick-prev2 {
+    /*戻る矢印の位置と形状*/
+    left: 0%;
+    transform: rotate(-135deg);
+}
+
+.slick-next2 {
+    /*次へ矢印の位置と形状*/
+    right: 0%;
+    transform: rotate(45deg);
+}
+
+.view-link {
+    color: black;
+}
+
+.view-link:hover {
+    color: #2F5597;
+}
+
+.document-des {
+    position: relative;
+    font-size: 15px;
+    width: 180px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.book {
+    position: absolute;
+    top: 5%;
+    left: 30%;
+    width: 60px;
+    height: 60px;
+}
+
+.author-title {
+    margin-top: 80px;
+}
+
+/* cross table fin */
+
+/* MAC note */
+@media(min-width:1400px) {
+
+    .parent-tab-content {
+        left: 20%;
+    }
+
+    .parent-tab-content li {
+        width: 250px;
+    }
+
+    /* button */
+    .btn-area {
+        left: 55%;
+    }
+
+    .information {
+        margin-right: 0.7vw;
+    }
+
+    .information-area {
+        left: 62%;
+        top: 5%;
+        width: 16vw;
+    }
+
+    /* button fin */
+
+    .modal-body {
+        max-width: 900px;
+        width: 60%;
+        max-height: 500px;
+        height: 90%;
+        margin-top: -100;
+    }
+
+    .literature-block img {
+        width: 80%;
+        height: 80%;
+    }
+
+    .modal-body3 {
+        max-width: 900px;
+        width: 60%;
+        max-height: 500px;
+        height: 90%;
+        margin-top: -100;
+    }
+
+    .manipulation-description p {
+        font-size: 18px;
+    }
+
+    .top-3 {
+        width: 60% !important;
+        height: 50% !important;
+    }
+
+    .sub-tab-content {
+        max-height: 540px;
+    }
+}
+
+/* Monitor */
+@media(min-width:1450px) {
+    .header-title {
+        font-size: 60px;
+    }
+
+    .link {
+        font-size: 30px;
+        top: 22%;
+    }
+
+    /* button */
+
+    .btn-area {
+        left: 58%;
+    }
+
+    .option-btn {
+        font-size: 25px;
+    }
+
+    /* button fin */
+
+    .checked-number-area{
+        font-size: 27px;
+    }
+
+    .information-area {
+        left: 63%;
+        width: 20vw;
+    }
+
+    .information {
+        font-size: 25px;
+        margin-right: 1.5vw;
+    }
+
+    /* cross table */
+    .tab-content {
+        left: 20%;
+        width: 1170px;
+        height: 71vh;
+    }
+
+    .parent-tab-content {
+        margin-top: 60px;
+        left: 24%;
+    }
+
+    .parent-tab-content li {
+        font-size: 40px;
+        width: 335px;
+    }
+
+    .sub-tab-content {
+        max-height: 71vh;
+    }
+
+    .content-list {
+        font-size: 27px;
+        height: 210px;
+        padding-left: 50px;
+    }
+
+    .contents-block {
+        width: 1170px;
+    }
+
+    .tab-contents {
+        top: 5%;
+        left: 5%;
+        margin-left: 5px;
+        margin-top: 0.1vh;
+        width: 1105px;
+    }
+
+    .checkboxes {
+        transform: scale(1.8);
+    }
+
+    .document-des {
+        font-size: 18px;
+        width: 181px;
+    }
+
+    .modal-body {
+        margin-top: -190;
+        width: 90%;
+    }
+
+    .description-area h2 {
+        font-size: 40px;
+    }
+
+    .description-area p {
+        font-size: 22px;
+    }
+
+    .literature-block p {
+        font-size: 20px;
+    }
+
+    .modal-body2 {
+        width: 90%;
+        margin-top: -100;
+    }
+
+    .modal-content2 h3{
+        font-size: 36px;
+    }
+
+    table{
+        font-size: 20px;
+    }
+
+    .modal-body3 {
+        max-height: 600px;
+    }
+
+    .manipulation-description h3 {
+        font-size: 36px;
+    }
+
+    .manipulation-description p {
+        font-size: 20px;
+    }
+
+    #check-whether {
+        transform: scale(1.5);
+        margin-right: 0.5vw;
+        margin-left: 3vw;
+    }
+
+    label[for="show-or-not"] {
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+}
