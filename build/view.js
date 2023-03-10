@@ -1,25 +1,23 @@
 // 2023/03/07
 import Mirador from "mirador";
-getCSV(new URL("database.csv", "http://127.0.0.1:5500/NishiureArchives/dist/"));// 本番：パスを変更
-
+getCSV(new URL("database.csv", "http://127.0.0.1:5500/NishiureArchives/dist/")); // 本番：パスを変更
 //processes about CSV
-function getCSV(URLObj: URL) {
+function getCSV(URLObj) {
     const req = new XMLHttpRequest();
     const url = new URL(URLObj);
     req.open("get", url, true);
     req.send(null);
-
     //if csv could get, call convertCSVtoArray()	
     req.onload = function () {
         convertCSVtoArray(req.responseText, URLObj);
-    }
+    };
 }
 //chage CSV to two-dimensional array
-function convertCSVtoArray(str: String, URLObj: URL) {
+function convertCSVtoArray(str, URLObj) {
     let result = [];
     let result2 = [];
     let tmp = str.split("\n");
-    if (URLObj.toString() == "http://127.0.0.1:5500/NishiureArchives/dist/database.csv") {//本番：パスの変更
+    if (URLObj.toString() == "http://127.0.0.1:5500/NishiureArchives/dist/database.csv") { //本番：パスの変更
         // create two-dimensional array separate each lows in ","
         for (let i = 0; i < tmp.length; ++i) {
             result[i] = tmp[i].split(',');
@@ -27,7 +25,7 @@ function convertCSVtoArray(str: String, URLObj: URL) {
         for (let i = 0; i < result.length; i++) {
             for (let o = 0; o < result[i].length; o++) {
                 if (result[i][o].indexOf("\r") != -1 && result[i][o] != undefined) {
-                    result[i][o] = result[i][o].substr(0, result[i][o].indexOf("\r"))
+                    result[i][o] = result[i][o].substr(0, result[i][o].indexOf("\r"));
                 }
             }
         }
@@ -35,20 +33,20 @@ function convertCSVtoArray(str: String, URLObj: URL) {
         makeCatalogList(result);
     }
 }
-
 //get parameter from URL
-function getParam(name: String, url: string) {
-    if (url == "") url = window.location.href;
+function getParam(name, url) {
+    if (url == "")
+        url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url);
+    if (!results)
+        return null;
+    if (!results[2])
+        return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
-
 const manifest = getParam("manifest1", "");
-function makeRelationalList(result: String[][]) {
+function makeRelationalList(result) {
     let manifests = [];
     let manifestCategory = 0;
     if (manifest !== null) {
@@ -69,11 +67,10 @@ function makeRelationalList(result: String[][]) {
         }
     }
 }
-
 //make catalog list and give it to function making Mirador instance 
-function makeCatalogList(result: String[][]) {
+function makeCatalogList(result) {
     let catalogContents = [];
-    let manifestCategory = 0
+    let manifestCategory = 0;
     if (manifest !== null) {
         manifestCategory = Number(manifest.substr((manifest.indexOf(".json") - 1), 1));
         for (let i = 0; i < result[manifestCategory - 1].length; i++) {
@@ -85,17 +82,15 @@ function makeCatalogList(result: String[][]) {
     }
     makeMiradorInstance(catalogContents);
 }
-
-function makeMiradorInstance(catalogContents: any) {
+function makeMiradorInstance(catalogContents) {
     //get manifest from query
-    let manifests = []
-    let miradorProperty: any = {};
+    let manifests = [];
+    let miradorProperty = {};
     for (let i = 1; i <= 4; i++) {
         if (getParam("manifest" + i, "") != null) {
             manifests.push(getParam("manifest" + i, ""));
         }
     }
-
     if (manifests.length == 1) { // one literature
         miradorProperty = {
             id: "viewer",
@@ -104,9 +99,7 @@ function makeMiradorInstance(catalogContents: any) {
                     loadedManifest: manifests[0]
                 }
             ],
-            catalog: [{
-
-            }
+            catalog: [{}
             ],
             window: {
                 highlightAllAnnotations: true,
@@ -121,19 +114,16 @@ function makeMiradorInstance(catalogContents: any) {
                 }
             }
         };
-
         // //add relational literature at catalog of Mirador
         // for (manifest of catalogContents) {
         //     miradorProperty.catalog.push(manifest);
         // }
-
         //わからん
         for (const manifest of catalogContents) {
             miradorProperty.push();
-
         }
-
-    } else if (manifests.length == 2) { //two literature
+    }
+    else if (manifests.length == 2) { //two literature
         miradorProperty = {
             id: "viewer",
             windows: [
@@ -144,9 +134,7 @@ function makeMiradorInstance(catalogContents: any) {
                     loadedManifest: manifests[1]
                 }
             ],
-            catalog: [
-
-            ],
+            catalog: [],
             window: {
                 highlightAllAnnotations: true,
                 sideBarOpen: false,
@@ -160,12 +148,10 @@ function makeMiradorInstance(catalogContents: any) {
                 }
             }
         };
-
         //add relational literature at catalog of Mirador
         for (const manifest of catalogContents) {
             miradorProperty.catalog.push(manifest);
         }
-
     }
     else if (manifests.length == 3) { //three literature
         miradorProperty = {
@@ -181,9 +167,7 @@ function makeMiradorInstance(catalogContents: any) {
                     loadedManifest: manifests[2]
                 }
             ],
-            catalog: [
-
-            ],
+            catalog: [],
             window: {
                 highlightAllAnnotations: true,
                 sideBarOpen: false,
@@ -197,7 +181,6 @@ function makeMiradorInstance(catalogContents: any) {
                 }
             }
         };
-
         //add relational literature at catalog of Mirador
         for (const manifest of catalogContents) {
             miradorProperty.catalog.push(manifest);
@@ -220,9 +203,7 @@ function makeMiradorInstance(catalogContents: any) {
                     loadedManifest: manifests[3]
                 }
             ],
-            catalog: [
-
-            ],
+            catalog: [],
             window: {
                 highlightAllAnnotations: true,
                 sideBarOpen: false,
@@ -236,7 +217,6 @@ function makeMiradorInstance(catalogContents: any) {
                 }
             }
         };
-
         //add relational literature at catalog of Mirador
         for (const manifest of catalogContents) {
             miradorProperty.catalog.push(manifest);
@@ -244,3 +224,4 @@ function makeMiradorInstance(catalogContents: any) {
     }
     let miradorInstance = Mirador.viewer(miradorProperty);
 }
+//# sourceMappingURL=view.js.map

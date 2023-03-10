@@ -1,8 +1,8 @@
-// 2023/02/21
+// 2023/03/07
 import $ from 'jquery';
 import 'slick-carousel';
-getCSV(new URL("database.csv", "http://127.0.0.1:5500/NishiureArchives/dist/")); // 本番：パスを変更
-getCSV(new URL("database3.csv", "http://127.0.0.1:5500/NishiureArchives/dist/")); // 同上
+getCSV(new URL("database.csv", "http://127.0.0.1:5500/dist/")); // 本番：パスを変更
+getCSV(new URL("database3.csv", "http://127.0.0.1:5500/dist/")); // 同上
 //processes about CSV
 function getCSV(URLObj) {
     const req = new XMLHttpRequest();
@@ -19,7 +19,7 @@ function convertCSVtoArray(str, URLObj) {
     let result = [];
     let result2 = [];
     let tmp = str.split("\n");
-    if (URLObj.toString() == "http://127.0.0.1:5500/NishiureArchives/dist/database.csv") { //本番：パスの変更
+    if (URLObj.toString() == "http://127.0.0.1:5500/dist/database.csv") { //本番：パスの変更
         // create two-dimensional array separate each lows in ","
         for (let i = 0; i < tmp.length; ++i) {
             result[i] = tmp[i].split(',');
@@ -33,7 +33,7 @@ function convertCSVtoArray(str, URLObj) {
         }
         makeTab(result);
     }
-    else if (URLObj.toString() == "http://127.0.0.1:5500/NishiureArchives/dist/database3.csv") { //本番：パスを変更
+    else if (URLObj.toString() == "http://127.0.0.1:5500/dist/database3.csv") { //本番：パスを変更
         // create two-dimensional array separate each lows in ","
         for (let i = 0; i < tmp.length; ++i) {
             result2[i] = tmp[i].split(',');
@@ -48,6 +48,7 @@ function convertCSVtoArray(str, URLObj) {
         makeModalWindow(result2);
     }
 }
+//make modal window about literature list and detail
 function makeModalWindow(result) {
     let modal_content = document.getElementById("modal-content");
     if (modal_content !== null) {
@@ -90,7 +91,7 @@ function makeModalWindow(result) {
     }
     makemodal1();
 }
-//make cross tab
+//make table
 function makeTab(result) {
     //make parent
     let temp;
@@ -204,19 +205,84 @@ function tabQuery() {
         for (let i = 0; i < checkbox.length; i++) {
             // let parent = $(checkbox[i]).parent().parent().parent().parent().parent().parent().parent().parent();
             let parent = $(this).parent().parent().parent().parent().parent().parent().parent().parent();
-            console.log(parent);
             if ($(this).prop("checked")) {
-                console.log("checked");
                 $(parent).css("background-color", "rgb(218, 227, 243)");
             }
             else {
                 $(parent).css("background-color", "rgba(225, 219, 219, 0.4)");
             }
         }
+        showCheckedLiteratureNum(getChecked());
     });
     slider();
 }
 ;
+//get checks of checkboxes
+function getChecked() {
+    let checkedDatas = [];
+    const checked = document.querySelectorAll("input[name=option]:checked");
+    for (let i = 0; i < checked.length; i++) {
+        checkedDatas.push(checked[i]);
+    }
+    return checkedDatas;
+}
+//show number of checked literature
+//if the number of checked literature is upper limit(4) make checkbox disabled
+function showCheckedLiteratureNum(checkedDatas) {
+    if (checkedDatas.length == 0) {
+        $(".checked-number-area").css("display", "none");
+    }
+    else {
+        $(".checked-number-area").text("選択された文献  " + checkedDatas.length + "/4件");
+        $(".checked-number-area").css("display", "block");
+    }
+    if (checkedDatas.length >= 4) { // upper limit to select literature is 4
+        $(".checked-number-area").css("color", "red");
+        $(".checkboxes").prop("disabled", true);
+    }
+    else {
+        $(".checked-number-area").css("color", "black");
+        $(".checkboxes").prop("disabled", false);
+    }
+}
+//when use history.back(), check state of checkbox and change background-color of div 
+window.onload = function () {
+    const checkedDatas = getChecked();
+    for (let i = 0; i < checkedDatas.length; i++) {
+        let parent = $(checkedDatas[i]).parent().parent().parent().parent().parent().parent().parent().parent();
+        $(parent).css("background-color", "rgb(218, 227, 243)");
+    }
+    showCheckedLiteratureNum(checkedDatas);
+};
+//release all checked options
+const release_check_btn = document.getElementById("release-check");
+release_check_btn?.addEventListener("click", function () {
+    const checkebox = document.getElementsByName("option");
+    for (let i = 0; i < checkebox.length; i++) {
+        checkebox[i].checked = false;
+        let parent = $(checkebox[i]).parent().parent().parent().parent().parent().parent().parent().parent();
+        $(parent).css("background-color", "rgba(225, 219, 219, 0.4)");
+    }
+    showCheckedLiteratureNum(getChecked());
+});
+//submit IIIF manifest Link of checked literature to view.html using query
+const compare_btn = document.getElementById("compare-button");
+compare_btn?.addEventListener("click", function () {
+    const checkedDatas = getChecked();
+    if (checkedDatas.length == 0) {
+        window.alert("文献が選択されていません。");
+    }
+    else if (checkedDatas.length > 4) {
+        window.alert("選択できる文献は４つまでです。");
+    }
+    else {
+        let linkTxt = "./view.html?";
+        for (let i = 1; i <= checkedDatas.length; i++) {
+            linkTxt += "manifest" + i + "=" + checkedDatas[i - 1] + "&";
+        }
+        window.location.href = linkTxt;
+    }
+});
 // function about slider 
 function slider() {
     $('.slider').slick({
@@ -249,65 +315,6 @@ function slider() {
         ]
     });
 }
-//get checks of checkboxes
-function getChecked() {
-    let checkedDatas = [];
-    const checked = document.querySelectorAll("input[name=option]:checked");
-    for (let i = 0; i < checked.length; i++) {
-        checkedDatas.push(checked[i]);
-    }
-    /*
-    for (let checkeds of checked) {
-        checkedDatas.push(checkeds.value);
-    }*/
-    return checkedDatas;
-}
-// show numbers of literature checked
-$(document).click(function () {
-    let checkedDatas = getChecked();
-    if (checkedDatas.length == 0) {
-        $(".checked-number-area").css("display", "none");
-    }
-    else {
-        $(".checked-number-area").text("選択された文献  " + checkedDatas.length + "/4件");
-        $(".checked-number-area").css("display", "block");
-    }
-    if (checkedDatas.length >= 4) { // upper limit to select literature is 4
-        $(".checked-number-area").css("color", "red");
-        $(".checkboxes").prop("disabled", true);
-    }
-    else {
-        $(".checked-number-area").css("color", "black");
-        $(".checkboxes").prop("disabled", false);
-    }
-});
-//release all checked options
-const release_check_btn = document.getElementById("release-check");
-release_check_btn?.addEventListener("click", function () {
-    const checkebox = document.getElementsByName("option");
-    for (let i = 0; i < checkebox.length; i++) {
-        checkebox[i].checked = false;
-        let parent = $(checkebox[i]).parent().parent().parent().parent().parent().parent().parent().parent();
-        $(parent).css("background-color", "rgba(225, 219, 219, 0.4)");
-    }
-});
-const compare_btn = document.getElementById("compare-button");
-compare_btn?.addEventListener("click", function () {
-    const checkedDatas = getChecked();
-    if (checkedDatas.length == 0) {
-        window.alert("文献が選択されていません。");
-    }
-    else if (checkedDatas.length > 4) {
-        window.alert("選択できる文献は４つまでです。");
-    }
-    else {
-        let linkTxt = "./view.html?";
-        for (let i = 1; i <= checkedDatas.length; i++) {
-            linkTxt += "manifest" + i + "=" + checkedDatas[i - 1] + "&";
-        }
-        window.location.href = linkTxt;
-    }
-});
 // function about modal-window (overall)
 function makemodal1() {
     const open = $("#information");
@@ -392,6 +399,26 @@ function slider2() {
     });
     showManipulate();
 }
+//first access or long time no accessed, show introduction of manipulate
+function showManipulate() {
+    const lastAccess = localStorage.getItem("lastDate");
+    const showOrNot = localStorage.getItem("show-or-not");
+    const date = new Date();
+    const today = String(date.getFullYear()) + String((date.getMonth() + 1)) + String(date.getDate());
+    if (showOrNot == "not-show") {
+        checkValue.checked = true;
+    }
+    if (lastAccess == null && showOrNot == null) {
+        localStorage.setItem("lastDate", today); //set today to cash
+        // localStorage.setItem("lastDate", "20221101"); //test data
+        localStorage.setItem("show-or-not", "show");
+        $(".modal-container3").addClass("active");
+    }
+    else if (Number(today) - Number(lastAccess) >= 100 && showOrNot == "show") {
+        localStorage.setItem("lastDate", today); //set today to cash
+        $(".modal-container3").addClass("active");
+    }
+}
 // check state "show" or "not-show" manipulate description(modal)
 let checkValue = document.getElementById("check-whether");
 function checkState() {
@@ -418,26 +445,6 @@ check_whether && check_whether_label?.addEventListener("click", function () {
     }
     checkState();
 });
-//first access or long time no accessed, show introduction of manipulate
-function showManipulate() {
-    const lastAccess = localStorage.getItem("lastDate");
-    const showOrNot = localStorage.getItem("show-or-not");
-    const date = new Date();
-    const today = String(date.getFullYear()) + String((date.getMonth() + 1)) + String(date.getDate());
-    if (showOrNot == "not-show") {
-        checkValue.checked = true;
-    }
-    if (lastAccess == null && showOrNot == null) {
-        localStorage.setItem("lastDate", today); //set today to cash
-        // localStorage.setItem("lastDate", "20221101"); //test data
-        localStorage.setItem("show-or-not", "show");
-        $(".modal-container3").addClass("active");
-    }
-    else if (Number(today) - Number(lastAccess) >= 100 && showOrNot == "show") {
-        localStorage.setItem("lastDate", today); //set today to cash
-        $(".modal-container3").addClass("active");
-    }
-}
 // function about modal-window (individual)
 // $(function () {
 //     getCSV("./database3.csv");
