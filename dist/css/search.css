@@ -51,6 +51,15 @@ a:hover {
 
 /* header  fin*/
 
+.result-list {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    width: 50%;
+    /* background-color: black; */
+}
+
 /* Monitor */
 @media(min-width:1450px) {
     .header-title {

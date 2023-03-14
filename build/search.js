@@ -15,7 +15,6 @@ function getCSV(URLObj) {
 //chage CSV to two-dimensional array
 function convertCSVtoArray(str, URLObj) {
     let result = [];
-    let result2 = [];
     let tmp = str.split("\n");
     if (URLObj.toString() == "http://127.0.0.1:5500/dist/database.csv") { //本番：パスの変更
         // create two-dimensional array separate each lows in ","
@@ -43,5 +42,7 @@ function getParam(name, url) {
         return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
-const requestQuery = getParam("programID", "");
+function makeResultList() {
+    const requestQuery = getParam("programID", "");
+}
 //# sourceMappingURL=search.js.map
