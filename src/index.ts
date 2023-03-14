@@ -17,6 +17,7 @@ function getCSV(URLObj: URL) {
         convertCSVtoArray(req.responseText, URLObj);
     }
 }
+
 //chage CSV to two-dimensional array
 function convertCSVtoArray(str: String, URLObj: URL) {
     let result = [];
