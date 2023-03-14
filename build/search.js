@@ -28,6 +28,7 @@ function convertCSVtoArray(str, URLObj) {
                 }
             }
         }
+        makeResultList(result);
     }
 }
 //get parameter from URL
@@ -42,7 +43,19 @@ function getParam(name, url) {
         return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
-function makeResultList() {
-    const requestQuery = getParam("programID", "");
+//make result list of literature based on query search
+function makeResultList(result) {
+    const requestQuery = getParam("programID", "") || "0";
+    const programID = parseInt(requestQuery) - 1;
+    let resultList = document.getElementById("result-list");
+    if (resultList !== null && programID >= 0) {
+        for (let p = 3; result[programID][p]; p = p + 3) {
+            resultList.innerHTML += `
+            <div class="document-block">
+            <img class='book' src='./img/${result[programID][p]}_thumbnail.jpg' alt='thumbnail image'><br>
+            <p class='author-title'>${result[programID][p]}<br>${result[programID][p + 1]}</p>
+            </div>`;
+        }
+    }
 }
 //# sourceMappingURL=search.js.map

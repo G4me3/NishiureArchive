@@ -51,13 +51,27 @@ a:hover {
 
 /* header  fin*/
 
+/* result list  */
 .result-list {
     position: absolute;
-    top: 25%;
+    top: 50%;
     left: 50%;
-    transform:translate(-50%,-50%);
-    width: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    max-height: 50vh;
     /* background-color: black; */
+}
+
+.document-block {
+    text-align: center;
+    width: 20%;
+}
+
+.book {
+    width: 40%;
+    height: 40%;
 }
 
 /* Monitor */
