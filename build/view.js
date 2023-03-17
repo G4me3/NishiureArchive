@@ -84,14 +84,14 @@
 // function makeMiradorInstance(catalogContents: any) {
 //     //get manifest from query
 //     let manifests = []
-//     let miradorProperty: any = {};
+//     let config: any = {};
 //     for (let i = 1; i <= 4; i++) {
 //         if (getParam("manifest" + i, "") != null) {
 //             manifests.push(getParam("manifest" + i, ""));
 //         }
 //     }
 //     if (manifests.length == 1) { // one literature
-//         miradorProperty = {
+//         config = {
 //             id: "viewer",
 //             windows: [
 //                 {
@@ -116,14 +116,14 @@
 //         };
 //         // //add relational literature at catalog of Mirador
 //         // for (manifest of catalogContents) {
-//         //     miradorProperty.catalog.push(manifest);
+//         //     config.catalog.push(manifest);
 //         // }
 //         //わからん
 //         for (const manifest of catalogContents) {
-//             miradorProperty.push();
+//             config.catalog.push(manifest);
 //         }
 //     } else if (manifests.length == 2) { //two literature
-//         miradorProperty = {
+//         config = {
 //             id: "viewer",
 //             windows: [
 //                 {
@@ -150,11 +150,11 @@
 //         };
 //         //add relational literature at catalog of Mirador
 //         for (const manifest of catalogContents) {
-//             miradorProperty.catalog.push(manifest);
+//             config.catalog.push(manifest);
 //         }
 //     }
 //     else if (manifests.length == 3) { //three literature
-//         miradorProperty = {
+//         config = {
 //             id: "viewer",
 //             windows: [
 //                 {
@@ -184,11 +184,11 @@
 //         };
 //         //add relational literature at catalog of Mirador
 //         for (const manifest of catalogContents) {
-//             miradorProperty.catalog.push(manifest);
+//             config.catalog.push(manifest);
 //         }
 //     }
 //     else if (manifests.length == 4) { //four literature(Max)
-//         miradorProperty = {
+//         config = {
 //             id: "viewer",
 //             windows: [
 //                 {
@@ -221,9 +221,9 @@
 //         };
 //         //add relational literature at catalog of Mirador
 //         for (const manifest of catalogContents) {
-//             miradorProperty.catalog.push(manifest);
+//             config.catalog.push(manifest);
 //         }
 //     }
-//     let miradorInstance = Mirador.viewer(miradorProperty);
+//     let mirador = new Mirador(config);
 // }
 //# sourceMappingURL=view.js.map

@@ -1,5 +1,5 @@
 "use strict";
-// 2023/03/14
+// 2023/03/17
 getCSV(new URL("database.csv", "http://127.0.0.1:5500/dist/")); // 本番：パスを変更
 //processes about CSV
 function getCSV(URLObj) {
@@ -7,7 +7,7 @@ function getCSV(URLObj) {
     const url = new URL(URLObj);
     req.open("get", url, true);
     req.send(null);
-    //if csv could get, call convertCSVtoArray()	
+    //if csv could get, call convertCSVtoArray()
     req.onload = function () {
         convertCSVtoArray(req.responseText, URLObj);
     };
@@ -16,10 +16,11 @@ function getCSV(URLObj) {
 function convertCSVtoArray(str, URLObj) {
     let result = [];
     let tmp = str.split("\n");
-    if (URLObj.toString() == "http://127.0.0.1:5500/dist/database.csv") { //本番：パスの変更
+    if (URLObj.toString() == "http://127.0.0.1:5500/dist/database.csv") {
+        //本番：パスの変更
         // create two-dimensional array separate each lows in ","
         for (let i = 0; i < tmp.length; ++i) {
-            result[i] = tmp[i].split(',');
+            result[i] = tmp[i].split(",");
         }
         for (let i = 0; i < result.length; i++) {
             for (let o = 0; o < result[i].length; o++) {
@@ -40,7 +41,7 @@ function getParam(name, url) {
     if (!results)
         return null;
     if (!results[2])
-        return '';
+        return "";
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 //make result list of literature based on query search
@@ -52,8 +53,10 @@ function makeResultList(result) {
         for (let p = 3; result[programID][p]; p = p + 3) {
             resultList.innerHTML += `
             <div class="document-block">
-            <img class='book' src='./img/${result[programID][p]}_thumbnail.jpg' alt='thumbnail image'><br>
-            <p class='author-title'>${result[programID][p]}<br>${result[programID][p + 1]}</p>
+              <a class='document-link' href='./view.html?manifest1=${result[programID][p + 2]}'>
+                <img class='book' src='./img/${result[programID][p]}_thumbnail.jpg' alt='thumbnail image'><br>
+                <p class='author-title'>${result[programID][p]}<br>${result[programID][p + 1]}</p>
+              </a>
             </div>`;
         }
     }

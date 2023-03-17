@@ -40,9 +40,9 @@ body {
 }
 
 a {
+    text-decoration: none !important;
     padding-top: 5px 5px;
     color: white;
-    text-decoration: none !important;
 }
 
 a:hover {
@@ -66,13 +66,25 @@ a:hover {
 
 .document-block {
     text-align: center;
-    width: 20%;
+    width: 25%;
+    margin-bottom: 3vh;
+}
+
+.document-link {
+    color: black;
 }
 
 .book {
-    width: 40%;
-    height: 40%;
+    margin-top: 5.5vh;
+    width: 70%;
+    height: 70%;
+    border: 1px solid black;
 }
+
+.author-title {
+    margin-top: 1vh;
+}
+
 
 /* Monitor */
 @media(min-width:1450px) {

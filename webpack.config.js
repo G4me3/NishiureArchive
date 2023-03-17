@@ -1,5 +1,5 @@
-const webpack=require('webpack');
-const path=require("path");
+const webpack = require('webpack');
+const path = require("path");
 
 module.exports = {
   // モード値を production に設定すると最適化された状態で、
@@ -7,11 +7,14 @@ module.exports = {
   mode: "development",
 
   // メインとなるJavaScriptファイル（エントリーポイント）
-  entry: "./src/index.ts",
+  entry: {
+    index: "./src/index.ts",
+    view: "./src/view.ts"
+  },
 
-  output:{
-    filename:"index.js",
-    path:path.join(__dirname,"./dist/js/")
+  output: {
+    filename: "[name].bundle.js",
+    path: path.join(__dirname, "./dist/js/")
   },
 
   module: {
@@ -21,6 +24,7 @@ module.exports = {
         test: /\.ts$/,
         // TypeScript をコンパイルする
         use: "ts-loader",
+        exclude: /node_modules/
       },
     ],
   },
@@ -46,5 +50,5 @@ module.exports = {
       'window._': 'lodash',
     }),
   ],
-  
+
 };
