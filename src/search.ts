@@ -50,6 +50,12 @@ function getParam(name: String, url: string) {
 function makeResultList(result: String[][]) {
   const requestQuery = getParam("programID", "") || "0";
   const programID = parseInt(requestQuery) - 1;
+
+  let resultTitle=document.getElementById("result-title");
+  if(resultTitle!==null){
+    resultTitle.textContent=`検索ワード：${result[programID][1]}`;
+  }
+  
   let resultList = document.getElementById("result-list");
   if (resultList !== null && programID >= 0) {
     for (let p = 3; result[programID][p]; p = p + 3) {

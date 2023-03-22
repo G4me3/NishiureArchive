@@ -51,6 +51,12 @@ a:hover {
 
 /* header  fin*/
 
+#result-title {
+    font-size: 21px;
+    margin-top: 2vh;
+    margin-left: 1vw;
+}
+
 /* result list  */
 .result-list {
     position: absolute;
@@ -95,5 +101,9 @@ a:hover {
     .link {
         font-size: 30px;
         top: 22%;
+    }
+
+    #result-title{
+        font-size: 24px;
     }
 }
