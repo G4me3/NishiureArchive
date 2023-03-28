@@ -52,7 +52,7 @@ a:hover {
 /* header  fin*/
 
 #result-title {
-    font-size: 21px;
+    font-size: 23px;
     margin-top: 2vh;
     margin-left: 1vw;
 }
@@ -81,7 +81,6 @@ a:hover {
 }
 
 .book {
-    margin-bottom: 5.5vh;
     width: 70%;
     height: 70%;
     border: 1px solid black;
@@ -103,7 +102,7 @@ a:hover {
         top: 22%;
     }
 
-    #result-title{
+    #result-title {
         font-size: 24px;
     }
 }
