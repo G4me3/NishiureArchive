@@ -27,6 +27,9 @@ function convertCSVtoArray(str, URLObj) {
                 if (result[i][o].indexOf("\r") != -1 && result[i][o] != undefined) {
                     result[i][o] = result[i][o].substr(0, result[i][o].indexOf("\r"));
                 }
+                if (result[i][o].indexOf("<br>") != -1) { //remove <br> from database text 
+                    result[i][o] = result[i][o].substring(0, result[i][o].indexOf("<br>")) + result[i][o].substring(result[i][o].indexOf("<br>") + 4, result[i][o].length);
+                }
             }
         }
         makeResultList(result);
@@ -58,8 +61,8 @@ function makeResultList(result) {
             resultList.innerHTML += `
             <div class="document-block">
               <a class='document-link' href='./view.html?manifest1=${result[programID][p + 2]}'>
-                <img class='book' src='./img/${result[programID][p]}_thumbnail.jpg' alt='thumbnail image'><br>
                 <p class='author-title'>${result[programID][p]}<br>${result[programID][p + 1]}</p>
+                <img class='book' src='./img/${result[programID][p]}_thumbnail.jpg' alt='thumbnail image'><br>
               </a>
             </div>`;
         }
