@@ -2,20 +2,20 @@
 getCSV(new URL("database.csv", "http://127.0.0.1:5500/dist/")); // 本番：パスを変更
 
 //processes about CSV
-function getCSV(URLObj: URL) {
+export function getCSV(URLObj: URL) {
   const req = new XMLHttpRequest();
   const url = new URL(URLObj);
   req.open("get", url, true);
   req.send(null);
-
   //if csv could get, call convertCSVtoArray()
   req.onload = function () {
     convertCSVtoArray(req.responseText, URLObj);
   };
+
 }
 
 //chage CSV to two-dimensional array
-function convertCSVtoArray(str: String, URLObj: URL) {
+export function convertCSVtoArray(str: String, URLObj: URL) {
   let result = [];
   let tmp = str.split("\n");
   if (URLObj.toString() == "http://127.0.0.1:5500/dist/database.csv") {

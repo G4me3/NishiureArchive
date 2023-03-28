@@ -1,8 +1,7 @@
-"use strict";
 // 2023/03/17
 getCSV(new URL("database.csv", "http://127.0.0.1:5500/dist/")); // 本番：パスを変更
 //processes about CSV
-function getCSV(URLObj) {
+export function getCSV(URLObj) {
     const req = new XMLHttpRequest();
     const url = new URL(URLObj);
     req.open("get", url, true);
@@ -13,7 +12,7 @@ function getCSV(URLObj) {
     };
 }
 //chage CSV to two-dimensional array
-function convertCSVtoArray(str, URLObj) {
+export function convertCSVtoArray(str, URLObj) {
     let result = [];
     let tmp = str.split("\n");
     if (URLObj.toString() == "http://127.0.0.1:5500/dist/database.csv") {
