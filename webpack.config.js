@@ -9,7 +9,8 @@ module.exports = {
   // メインとなるJavaScriptファイル（エントリーポイント）
   entry: {
     index: "./src/index.ts",
-    view: "./src/view.ts"
+    view: "./src/view.ts",
+    search: "./src/search.ts"
   },
 
   output: {
