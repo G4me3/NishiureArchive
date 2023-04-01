@@ -65,7 +65,7 @@ a:hover {
     transform: translate(-50%, -50%);
     display: flex;
     flex-wrap: wrap;
-    width: 80%;
+    width: 89%;
     max-height: 50vh;
     /* background-color: black; */
 }
@@ -104,5 +104,9 @@ a:hover {
 
     #result-title {
         font-size: 24px;
+    }
+
+    .result-list{
+        width: 85%;
     }
 }
