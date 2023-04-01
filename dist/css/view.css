@@ -37,7 +37,6 @@ a {
 
 .link:hover {
     border-bottom: 2px solid #3A35F6;
-    ;
     color: #3A35F6;
 }
 
@@ -49,6 +48,31 @@ a {
     width: 70%;
     height: 82%;
     left: 30px;
+}
+
+.MovieArchive-link {
+    position: absolute;
+    left: 90%;
+    top: 12%;
+    font-size: 18px;
+    /* background-image: url('../img/External_Link_icon-icons.com_55915.png');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: right center; */
+}
+
+.MovieArchive-link-url{
+    color: black;
+}
+
+.MovieArchive-link-url:hover{
+    text-decoration: underline;
+}
+
+.external-link-icon{
+    width: 20px;
+    margin-bottom: 0.5vh;
+    cursor: pointer;
 }
 
 /* reference list */
@@ -96,13 +120,13 @@ a {
 
 /* MAC note */
 @media(min-width:1400px) {
-    .other-references{
+    .other-references {
         width: 25.3vw;
         left: 73.5%;
         height: 68vh;
     }
-    
-    .h2{
+
+    .h2 {
         margin-top: 2vh;
     }
 }

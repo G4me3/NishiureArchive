@@ -26,6 +26,7 @@ function convertCSVtoArray(str) {
             }
         }
     }
+    makeExternalLinkToMovieArchive();
     makeRelationalList(result);
     makeCatalogList(result);
 }
@@ -43,9 +44,16 @@ function getParam(name, url) {
 
 manifest = getParam("manifest1");
 manifestCategory = 0;
+manifestCategory = Number(manifest.substr((manifest.indexOf(".json") - 1), 1));
+
+function makeExternalLinkToMovieArchive(){
+    const programID=manifestCategory;
+    let externalLink=document.getElementById("MovieArchive-link-url");
+    externalLink.href=`https://www.sugilab.net/iida.yuta.lab/sotsuken/search.html?programID=${programID}`;
+}
+
 function makeRelationalList(result) {
     manifests = [];
-    manifestCategory = Number(manifest.substr((manifest.indexOf(".json") - 1), 1));
     for (i = 3; i < result[manifestCategory - 1].length; i++) {
         manifests.push({ author: result[manifestCategory - 1][i], title: result[manifestCategory - 1][++i], url: result[manifestCategory - 1][++i] });
     }
@@ -60,7 +68,6 @@ function makeRelationalList(result) {
 //make catalog list and give it to function making Mirador instance 
 function makeCatalogList(result) {
     catalogContents = [];
-    manifestCategory = Number(manifest.substr((manifest.indexOf(".json") - 1), 1));
     for (i = 0; i < result[manifestCategory - 1].length; i++) {
         if (result[manifestCategory - 1][i].indexOf('manifest') != -1) {
             manifestURL = result[manifestCategory - 1][i];
@@ -71,7 +78,6 @@ function makeCatalogList(result) {
 }
 
 function makeMiradorInstance(catalogContents) {
-
     //get manifest from query
     manifests = []
     for (i = 1; i <= 4; i++) {
