@@ -1,6 +1,6 @@
 // 2023/03/17
 // getCSV(new URL("database.csv", "http://127.0.0.1:5500/dist/")); // 本番：パスを変更
-getCSV(new URL("database.csv", "https://www.sugilab.net/mori.hiroyuki.lab/dist"));
+getCSV(new URL("database.csv", "https://www.sugilab.net/mori.hiroyuki.lab/NishiureArchive/dist/"));
 
 //processes about CSV
 export function getCSV(URLObj: URL) {
