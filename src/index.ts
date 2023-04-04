@@ -2,8 +2,11 @@
 import $ from 'jquery'
 import 'slick-carousel';
 
-getCSV(new URL("database.csv", "http://127.0.0.1:5500/dist/"));// 本番：パスを変更
-getCSV(new URL("database3.csv", "http://127.0.0.1:5500/dist/"));// 同上
+// getCSV(new URL("database.csv", "http://127.0.0.1:5500/dist/"));// 本番：パスを変更
+// getCSV(new URL("database3.csv", "http://127.0.0.1:5500/dist/"));// 同上
+
+getCSV(new URL("database.csv","https://www.sugilab.net/mori.hiroyuki.lab/NishiureArchive/dist/"));
+getCSV(new URL("database3.csv","https://www.sugilab.net/mori.hiroyuki.lab/NishiureArchive/dist/"));
 
 //processes about CSV
 function getCSV(URLObj: URL) {
@@ -23,7 +26,8 @@ function convertCSVtoArray(str: String, URLObj: URL) {
     let result = [];
     let result2 = [];
     let tmp = str.split("\n");
-    if (URLObj.toString() == "http://127.0.0.1:5500/dist/database.csv") {//本番：パスの変更
+    // if (URLObj.toString() == "http://127.0.0.1:5500/dist/database.csv") {//本番：パスの変更
+    if(URLObj.toString()=="https://www.sugilab.net/mori.hiroyuki.lab/NishiureArchive/dist/database.csv"){
         // create two-dimensional array separate each lows in ","
         for (let i = 0; i < tmp.length; ++i) {
             result[i] = tmp[i].split(',');
@@ -36,7 +40,8 @@ function convertCSVtoArray(str: String, URLObj: URL) {
             }
         }
         makeTab(result);
-    } else if (URLObj.toString() == "http://127.0.0.1:5500/dist/database3.csv") {//本番：パスを変更
+    // } else if (URLObj.toString() == "http://127.0.0.1:5500/dist/database3.csv") {//本番：パスを変更
+    }else if (URLObj.toString() == "https://www.sugilab.net/mori.hiroyuki.lab/NishiureArchive/dist/database3.csv") {
         // create two-dimensional array separate each lows in ","
         for (let i = 0; i < tmp.length; ++i) {
             result2[i] = tmp[i].split(',');

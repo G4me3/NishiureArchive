@@ -1,5 +1,6 @@
 // 2023/03/17
-getCSV(new URL("database.csv", "http://127.0.0.1:5500/dist/")); // 本番：パスを変更
+// getCSV(new URL("database.csv", "http://127.0.0.1:5500/dist/")); // 本番：パスを変更
+getCSV(new URL("database.csv", "https://www.sugilab.net/mori.hiroyuki.lab/dist"));
 
 //processes about CSV
 export function getCSV(URLObj: URL) {
@@ -18,8 +19,8 @@ export function getCSV(URLObj: URL) {
 export function convertCSVtoArray(str: String, URLObj: URL) {
   let result = [];
   let tmp = str.split("\n");
-  if (URLObj.toString() == "http://127.0.0.1:5500/dist/database.csv") {
-    //本番：パスの変更
+  // if (URLObj.toString() == "http://127.0.0.1:5500/dist/database.csv") {//本番：パスの変更
+  if(URLObj.toString()=="https://www.sugilab.net/mori.hiroyuki.lab/NishiureArchive/dist/database.csv"){
     // create two-dimensional array separate each lows in ","
     for (let i = 0; i < tmp.length; ++i) {
       result[i] = tmp[i].split(",");
