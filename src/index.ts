@@ -5,8 +5,8 @@ import 'slick-carousel';
 // getCSV(new URL("database.csv", "http://127.0.0.1:5500/dist/"));// 本番：パスを変更
 // getCSV(new URL("database3.csv", "http://127.0.0.1:5500/dist/"));// 同上
 
-getCSV(new URL("database.csv","https://www.sugilab.net/mori.hiroyuki.lab/NishiureArchive/dist/"));
-getCSV(new URL("database3.csv","https://www.sugilab.net/mori.hiroyuki.lab/NishiureArchive/dist/"));
+getCSV(new URL("database.csv", "https://www.sugilab.net/mori.hiroyuki.lab/NishiureArchive/dist/"));
+getCSV(new URL("database3.csv", "https://www.sugilab.net/mori.hiroyuki.lab/NishiureArchive/dist/"));
 
 //processes about CSV
 function getCSV(URLObj: URL) {
@@ -27,7 +27,7 @@ function convertCSVtoArray(str: String, URLObj: URL) {
     let result2 = [];
     let tmp = str.split("\n");
     // if (URLObj.toString() == "http://127.0.0.1:5500/dist/database.csv") {//本番：パスの変更
-    if(URLObj.toString()=="https://www.sugilab.net/mori.hiroyuki.lab/NishiureArchive/dist/database.csv"){
+    if (URLObj.toString() == "https://www.sugilab.net/mori.hiroyuki.lab/NishiureArchive/dist/database.csv") {
         // create two-dimensional array separate each lows in ","
         for (let i = 0; i < tmp.length; ++i) {
             result[i] = tmp[i].split(',');
@@ -40,8 +40,8 @@ function convertCSVtoArray(str: String, URLObj: URL) {
             }
         }
         makeTab(result);
-    // } else if (URLObj.toString() == "http://127.0.0.1:5500/dist/database3.csv") {//本番：パスを変更
-    }else if (URLObj.toString() == "https://www.sugilab.net/mori.hiroyuki.lab/NishiureArchive/dist/database3.csv") {
+        // } else if (URLObj.toString() == "http://127.0.0.1:5500/dist/database3.csv") {//本番：パスを変更
+    } else if (URLObj.toString() == "https://www.sugilab.net/mori.hiroyuki.lab/NishiureArchive/dist/database3.csv") {
         // create two-dimensional array separate each lows in ","
         for (let i = 0; i < tmp.length; ++i) {
             result2[i] = tmp[i].split(',');
@@ -239,17 +239,18 @@ function tabQuery() {
 
 //get checks of checkboxes
 function getChecked() {
-    let checkedDatas = [];
-    const checked = document.querySelectorAll("input[name=option]:checked");
-    for (let i = 0; i < checked.length; i++) {
-        checkedDatas.push(checked[i]);
-    }
+    let checkedDatas: string[] = [];
+    const checked = document.querySelectorAll<HTMLInputElement>("input[name=option]:checked");
+    checked.forEach(checkElement => {
+        checkedDatas.push(checkElement.value);
+    })
+    console.log(checkedDatas);
     return checkedDatas;
 }
 
 //show number of checked literature
 //if the number of checked literature is upper limit(4) make checkbox disabled
-function showCheckedLiteratureNum(checkedDatas: Element[]) {
+function showCheckedLiteratureNum(checkedDatas: string[]) {
     if (checkedDatas.length == 0) {
         $(".checked-number-area").css("display", "none");
     } else {
@@ -291,12 +292,12 @@ release_check_btn?.addEventListener("click", function () {
 const compare_btn = document.getElementById("compare-button");
 compare_btn?.addEventListener("click", function () {
     const checkedDatas = getChecked();
+    let linkTxt = "./view.html?";
     if (checkedDatas.length == 0) {
         window.alert("文献が選択されていません。");
     } else if (checkedDatas.length > 4) {
         window.alert("選択できる文献は４つまでです。");
     } else {
-        let linkTxt = "./view.html?";
         for (let i = 1; i <= checkedDatas.length; i++) {
             linkTxt += "manifest" + i + "=" + checkedDatas[i - 1] + "&";
         }

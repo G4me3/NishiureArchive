@@ -225,9 +225,10 @@ function tabQuery() {
 function getChecked() {
     let checkedDatas = [];
     const checked = document.querySelectorAll("input[name=option]:checked");
-    for (let i = 0; i < checked.length; i++) {
-        checkedDatas.push(checked[i]);
-    }
+    checked.forEach(checkElement => {
+        checkedDatas.push(checkElement.value);
+    });
+    console.log(checkedDatas);
     return checkedDatas;
 }
 //show number of checked literature
@@ -273,6 +274,7 @@ release_check_btn?.addEventListener("click", function () {
 const compare_btn = document.getElementById("compare-button");
 compare_btn?.addEventListener("click", function () {
     const checkedDatas = getChecked();
+    let linkTxt = "./view.html?";
     if (checkedDatas.length == 0) {
         window.alert("文献が選択されていません。");
     }
@@ -280,7 +282,6 @@ compare_btn?.addEventListener("click", function () {
         window.alert("選択できる文献は４つまでです。");
     }
     else {
-        let linkTxt = "./view.html?";
         for (let i = 1; i <= checkedDatas.length; i++) {
             linkTxt += "manifest" + i + "=" + checkedDatas[i - 1] + "&";
         }
