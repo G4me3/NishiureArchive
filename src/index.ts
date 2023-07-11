@@ -161,7 +161,7 @@ function makeTab(result: String[][]) {
                     for (let p = 3; result[o][p]; p = p + 3) {
                         tab_detail_content.innerHTML += `
                             <li>
-                                <input id="checkbox" class='checkboxes' type='checkbox' name='option' value='${result[o][p + 2]}'>
+                                <input id="checkbox" class='checkboxes' type='checkbox' name='option' value='${result[o][p + 2]}'">
                                 <a class='view-link' href='./view.html?manifest1=${result[o][p + 2]}'>
                                     <div class='document-des'>
                                         <img class='book' src='./img/${result[o][p]}_thumbnail.jpg' alt='thumbnail image'><br>
@@ -219,23 +219,27 @@ function tabQuery() {
         $(targetTabId as any).parent().addClass('active');
     }
 
-
-    $("input[name='option']").change(function () {
-        const checkbox = document.getElementsByName("option") as NodeListOf<HTMLInputElement>;
-        for (let i = 0; i < checkbox.length; i++) {
-            // let parent = $(checkbox[i]).parent().parent().parent().parent().parent().parent().parent().parent();
-            let parent = $(this).parent().parent().parent().parent().parent().parent().parent().parent();
-            if ($(this).prop("checked")) {
-                $(parent).css("background-color", "rgb(218, 227, 243)");
-            } else {
-                $(parent).css("background-color", "rgba(225, 219, 219, 0.4)");
+    const inputs = document.querySelectorAll("input[name='option']") as NodeListOf<HTMLInputElement>;
+    inputs.forEach(input => {
+        input.addEventListener("change", function () {
+            console.log("change event");
+            const checkbox = document.getElementsByName("option") as NodeListOf<HTMLInputElement>;
+            for (let i = 0; i < checkbox.length; i++) {
+                // let parent = $(checkbox[i]).parent().parent().parent().parent().parent().parent().parent().parent();
+                let parent = $(this).parent().parent().parent().parent().parent().parent().parent().parent();
+                if ($(this).prop("checked")) {
+                    $(parent).css("background-color", "rgb(218, 227, 243)");
+                } else {
+                    $(parent).css("background-color", "rgba(225, 219, 219, 0.4)");
+                }
             }
-        }
-        showCheckedLiteratureNum(getChecked());
+            showCheckedLiteratureNum(getChecked());
+        })
     })
 
     slider();
 };
+
 
 //get checks of checkboxes
 function getChecked() {
@@ -251,6 +255,7 @@ function getChecked() {
 //show number of checked literature
 //if the number of checked literature is upper limit(4) make checkbox disabled
 function showCheckedLiteratureNum(checkedDatas: string[]) {
+    console.log("showCheckedLiteratureNum");
     if (checkedDatas.length == 0) {
         $(".checked-number-area").css("display", "none");
     } else {
@@ -259,10 +264,10 @@ function showCheckedLiteratureNum(checkedDatas: string[]) {
     }
     if (checkedDatas.length >= 4) {// upper limit to select literature is 4
         $(".checked-number-area").css("color", "red");
-        $(".checkboxes").prop("disabled", true);
+        // $(".checkboxes").prop("disabled", true);
     } else {
         $(".checked-number-area").css("color", "black");
-        $(".checkboxes").prop("disabled", false);
+        // $(".checkboxes").prop("disabled", false);
     }
 }
 
